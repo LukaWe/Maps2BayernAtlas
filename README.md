@@ -7,6 +7,23 @@
 
 ![Demo](screenshots/demo.webp)
 
+## Technische Details
+### Warum ist eine Koordinatentransformation notwendig?
+Google Maps und OpenStreetMap verwenden das **WGS84**-Koordinatensystem (EPSG:4326) mit Längen- und Breitengraden (z.B. `48.137°N, 11.575°E`). Dies ist das weltweit gebräuchlichste Format für GPS und Webkarten.
+
+Der **BayernAtlas** hingegen verwendet das **UTM Zone 32N** Koordinatensystem basierend auf dem europäischen Referenzsystem **ETRS89** (EPSG:25832). Dieses System verwendet metrische Rechts- und Hochwerte (z.B. `691567, 5334734`) und ist optimiert für präzise Vermessungsarbeiten in Mitteleuropa.
+
+**Beispiel:**
+| System | Darstellung |
+|--------|-------------|
+| WGS84 (Google Maps) | `48.137000°N, 11.575000°E` |
+| UTM Zone 32N (BayernAtlas) | `Rechtswert: 691567, Hochwert: 5334734` |
+
+Diese Anwendung führt die mathematische Transformation zwischen beiden Systemen durch, sodass du einfach einen Google Maps oder OSM Link eingeben kannst und direkt den korrekten BayernAtlas-Link erhältst.
+
+### Bayern-Grenze
+Die Anwendung verwendet eine Polygon-Approximation der bayerischen Grenzen mit ~5km Pufferzone. Dies gewährleistet vollständige Abdeckung einschließlich grenznaher Gebiete, für die BayernAtlas noch Daten bereitstellt.
+
 ## Funktionen
 - ✅ **Multi-Quellen Support** - Google Maps & OpenStreetMap URLs
 - ✅ **Koordinatentransformation** - WGS84 → UTM Zone 32N (ETRS89)
@@ -29,23 +46,6 @@
 - ⚠️ **Nur Bayern** - Koordinaten außerhalb Bayerns werden abgelehnt
 - ⚠️ **Rate Limit** - 10 Anfragen/Minute pro IP (konfigurierbar)
 - ⚠️ **Origin-Whitelist** - API ist auf konfigurierte Domains beschränkt
-
-## Technische Details
-### Warum ist eine Koordinatentransformation notwendig?
-Google Maps und OpenStreetMap verwenden das **WGS84**-Koordinatensystem (EPSG:4326) mit Längen- und Breitengraden (z.B. `48.137°N, 11.575°E`). Dies ist das weltweit gebräuchlichste Format für GPS und Webkarten.
-
-Der **BayernAtlas** hingegen verwendet das **UTM Zone 32N** Koordinatensystem basierend auf dem europäischen Referenzsystem **ETRS89** (EPSG:25832). Dieses System verwendet metrische Rechts- und Hochwerte (z.B. `691567, 5334734`) und ist optimiert für präzise Vermessungsarbeiten in Mitteleuropa.
-
-**Beispiel:**
-| System | Darstellung |
-|--------|-------------|
-| WGS84 (Google Maps) | `48.137000°N, 11.575000°E` |
-| UTM Zone 32N (BayernAtlas) | `Rechtswert: 691567, Hochwert: 5334734` |
-
-Diese Anwendung führt die mathematische Transformation zwischen beiden Systemen durch, sodass du einfach einen Google Maps oder OSM Link eingeben kannst und direkt den korrekten BayernAtlas-Link erhältst.
-
-### Bayern-Grenze
-Die Anwendung verwendet eine Polygon-Approximation der bayerischen Grenzen mit ~5km Pufferzone. Dies gewährleistet vollständige Abdeckung einschließlich grenznaher Gebiete, für die BayernAtlas noch Daten bereitstellt.
 
 ## Installation
 Repository klonen (oder als ZIP herunterladen und entpacken).
