@@ -249,4 +249,7 @@ This application performs the mathematical transformation between both systems a
 
 ---
 
-Made with ❤️ for Bavaria 🏔️
+Made with ❤️ in Bavaria from a Bavarian 🏔️
+
+If you find this useful and want to support:
+**Bitcoin (BTC):** `bc1q3lz8vxpk0rchqn6dq8g08rkcqts425csuvnjr2477uzdenak5n8sfds2ke`
