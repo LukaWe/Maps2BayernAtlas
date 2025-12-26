@@ -5,7 +5,10 @@
 ![Lizenz](https://img.shields.io/badge/Lizenz-MIT-green)
 ![Keine Abhängigkeiten](https://img.shields.io/badge/Abhängigkeiten-keine-brightgreen)
 
+# Demonstration
 ![Demo](screenshots/demo.webp)
+
+## Demo
 <a href="https://maps.vuuc.de" target="_blank">Demo URL</a>
 
 ## Technische Details
