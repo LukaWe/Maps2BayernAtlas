@@ -149,27 +149,30 @@ class LinkParser {
         
         // Handle shortened URLs (maps.app.goo.gl)
         if (strpos($url, 'goo.gl') !== false || strpos($url, 'maps.app.goo.gl') !== false) {
+            // Try get_headers first (works without cURL)
             $headers = @get_headers($url, true);
             if ($headers && isset($headers['Location'])) {
                 $location = is_array($headers['Location']) ? end($headers['Location']) : $headers['Location'];
                 $finalUrl = $location;
             } else {
-                // Fallback: try CURL if get_headers fails
-                $ch = curl_init($url);
-                curl_setopt($ch, CURLOPT_HEADER, true);
-                curl_setopt($ch, CURLOPT_NOBODY, true);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
-                $response = curl_exec($ch);
-                
-                $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-                if ($httpCode >= 300 && $httpCode < 400) {
-                    preg_match('/^Location: (.+)$/mi', $response, $matches);
-                    if (!empty($matches[1])) {
-                        $finalUrl = trim($matches[1]);
+                // Fallback: Use stream context to follow redirects
+                $context = stream_context_create([
+                    'http' => [
+                        'method' => 'HEAD',
+                        'follow_location' => 0,
+                        'max_redirects' => 0,
+                        'ignore_errors' => true,
+                    ]
+                ]);
+                @file_get_contents($url, false, $context);
+                if (isset($http_response_header)) {
+                    foreach ($http_response_header as $header) {
+                        if (stripos($header, 'Location:') === 0) {
+                            $finalUrl = trim(substr($header, 9));
+                            break;
+                        }
                     }
                 }
-                curl_close($ch);
             }
         }
 

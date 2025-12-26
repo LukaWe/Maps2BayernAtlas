@@ -51,7 +51,9 @@ Die Anwendung verwendet eine Polygon-Approximation der bayerischen Grenzen mit ~
 Repository klonen (oder als ZIP herunterladen und entpacken).
 Für Produktiveinsatz auf einem PHP-fähigen Webserver bereitstellen (Apache, Nginx mit PHP-FPM, etc.)
 
-**Voraussetzungen:** PHP 8.0+ with cURL extension
+**Voraussetzungen:** 
+- PHP 8.0+
+- `allow_url_fopen = On` in php.ini (für gekürzte URLs wie maps.app.goo.gl)
 
 ## Konfiguration
 
@@ -209,7 +211,9 @@ cd Maps2BayernAtlas
 php -S localhost:8080
 ```
 
-**Requirements:** PHP 8.0+ with cURL extension
+**Requirements:** 
+- PHP 8.0+
+- `allow_url_fopen = On` in php.ini (required for short URL expansion)
 
 ### API Usage
 
