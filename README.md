@@ -36,6 +36,7 @@ Die Anwendung verwendet eine Polygon-Approximation der bayerischen Grenzen mit ~
 - ✅ **Mehrsprachig** - Deutsche & englische Benutzeroberfläche
 - ✅ **Keine Abhängigkeiten** - Reines PHP, keine externen Bibliotheken
 - ✅ **Rate Limiting** - Eingebauter Schutz vor Missbrauch
+- ✅ **Standalone-Version** - `standalone.html` funktioniert lokal im Browser ohne Server
 
 ## Unterstützte URL-Formate
 | Quelle | Format | Beispiel |
@@ -191,6 +192,7 @@ MIT-Lizenz - siehe [LICENSE](LICENSE) für Details.
 - ✅ **REST API** - Programmatic access for automation
 - ✅ **Multi-Language** - German & English interface
 - ✅ **No Dependencies** - Pure PHP, no external libraries required
+- ✅ **Standalone Version** - `standalone.html` works locally in the browser without a server
 
 ### Supported URL Formats
 
