@@ -8,9 +8,6 @@
 # Demonstration
 ![Demo](screenshots/demo.webp)
 
-## Demo
-<a href="https://maps.vuuc.de" target="_blank">Demo URL</a>
-
 ## Technische Details
 ### Warum ist eine Koordinatentransformation notwendig?
 Google Maps und OpenStreetMap verwenden das **WGS84**-Koordinatensystem (EPSG:4326) mit Längen- und Breitengraden (z.B. `48.137°N, 11.575°E`). Dies ist das weltweit gebräuchlichste Format für GPS und Webkarten.
